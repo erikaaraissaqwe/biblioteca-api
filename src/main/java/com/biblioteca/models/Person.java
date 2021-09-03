@@ -4,6 +4,7 @@ import com.biblioteca.utils.Occupation;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 public class Person {
 
@@ -24,9 +25,6 @@ public class Person {
     private Date birthday;
 
     private Occupation occupation;
-
-    public Person() {
-    }
 
     public Person(String cpf, String name, String rua, Long number, String cep, List<String> emails, List<String> phoneNumber, Date birthday, Occupation occupation) {
         this.cpf = cpf;
@@ -110,5 +108,13 @@ public class Person {
 
     public void setOccupation(Occupation occupation) {
         this.occupation = occupation;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Person person = (Person) o;
+        return cpf.equals(person.cpf);
     }
 }

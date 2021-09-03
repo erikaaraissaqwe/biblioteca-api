@@ -2,6 +2,7 @@ package com.biblioteca.models;
 
 
 import java.util.List;
+import java.util.Objects;
 
 public class Book {
 
@@ -14,9 +15,6 @@ public class Book {
     private List<String> authors;
 
     private Long numberOfPages;
-
-    public Book() {
-    }
 
     public Book(String isbn, String title, String genre, List<String> authors, Long numberOfPages) {
         this.isbn = isbn;
@@ -64,5 +62,13 @@ public class Book {
 
     public void setNumberOfPages(Long numberOfPages) {
         this.numberOfPages = numberOfPages;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Book book = (Book) o;
+        return isbn.equals(book.isbn);
     }
 }
